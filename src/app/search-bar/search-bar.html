@@ -1,0 +1,29 @@
+<div class="search-container">
+  <h2>Search for a car</h2>
+
+  <div class="search-form">
+    <input
+      type="text"
+      [(ngModel)]="marque"
+      placeholder="Enter a car brand"
+    />
+
+    <button type="button" (click)="searchAutoList()">
+      Search
+    </button>
+  </div>
+
+  <p *ngIf="filteredAutos.length === 0 && marque">
+    No cars found. Click Search to check the brand.
+  </p>
+
+  <div class="car-list">
+    <div class="car-item" *ngFor="let auto of filteredAutos">
+      <h3>{{ auto.marque }} {{ auto.modele }}</h3>
+
+      <button type="button" (click)="selectedAuto(auto)">
+        View
+      </button>
+    </div>
+  </div>
+</div>
